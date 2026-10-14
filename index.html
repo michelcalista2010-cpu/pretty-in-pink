@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pretty in Pink ♡</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#fff6fa;
+    color:#623b50;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    background:#ffb8d7;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 3px 15px rgba(180,70,120,.18);
+}
+
+.logo{
+    font-size:27px;
+    font-weight:bold;
+    color:#943d6c;
+}
+
+nav a{
+    color:#713451;
+    text-decoration:none;
+    margin:0 8px;
+    font-weight:bold;
+}
+
+.cart-button{
+    border:none;
+    background:white;
+    color:#a13d70;
+    padding:10px 17px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.cart-count{
+    background:#e45d96;
+    color:white;
+    border-radius:50%;
+    padding:3px 7px;
+    font-size:12px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    text-align:center;
+    padding:75px 20px;
+    background:linear-gradient(
+        135deg,
+        #ffd5e6,
+        #fff0f7
+    );
+}
+
+.hero h1{
+    font-size:58px;
+    margin:10px;
+    color:#a13d70;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.btn{
+    display:inline-block;
+    background:#e66d9f;
+    color:white;
+    border:0;
+    border-radius:25px;
+    padding:12px 22px;
+    font-weight:bold;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    max-width:1150px;
+    margin:auto;
+    padding:50px 7%;
+}
+
+h2{
+    text-align:center;
+    color:#a13d70;
+    font-size:32px;
+}
+
+.intro{
+    text-align:center;
+    line-height:1.7;
+    max-width:720px;
+    margin:auto;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.tabs{
+    text-align:center;
+    margin:25px 0;
+}
+
+.tabs button{
+    border:0;
+    background:#ffd5e6;
+    color:#8d3d65;
+    padding:10px 17px;
+    border-radius:23px;
+    margin:4px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.tabs button:hover{
+    background:#ed82ae;
+    color:white;
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.card{
+    background:white;
+    border-radius:25px;
+    padding:16px;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(190,85,130,.15);
+}
+
+
+/* FOTO PRODUK ASLI */
+
+.product-art{
+    height:245px;
+    border-radius:18px;
+    background:#fff7fb;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+}
+
+.product-art img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:18px;
+}
+
+
+.card h3{
+    color:#963c6c;
+}
+
+.price{
+    font-size:19px;
+    font-weight:bold;
+    color:#d04e8b;
+}
+
+.buy{
+    margin-top:8px;
+    background:#e66d9f;
+    color:white;
+    border:0;
+    border-radius:25px;
+    padding:11px 20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.buy:hover{
+    background:#c94e82;
+}
+
+
+/* =========================
+   PRICE TABLE
+========================= */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+th,
+td{
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #f3d7e4;
+}
+
+th{
+    background:#f5a8c8;
+    color:#71344f;
+}
+
+
+/* =========================
+   PROMO
+========================= */
+
+.promo{
+    background:#f7a8c9;
+    border-radius:30px;
+    padding:30px;
+    text-align:center;
+}
+
+
+/* =========================
+   BEAUTY TIPS
+========================= */
+
+.tips{
+    background:white;
+    border-radius:25px;
+    padding:22px;
+    line-height:1.8;
+}
+
+
+/* =========================
+   CART
+========================= */
+
+.cart-section{
+    display:none;
+
+    position:fixed;
+    right:0;
+    top:0;
+
+    width:420px;
+    max-width:100%;
+    height:100vh;
+
+    background:#fff;
+
+    z-index:1000;
+
+    box-shadow:
+        -5px 0 25px rgba(150,50,100,.2);
+
+    overflow-y:auto;
+
+    padding:25px;
+}
+
+.cart-section.active{
+    display:block;
+}
+
+
+/* CART HEADER */
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    border-bottom:2px solid #ffd3e4;
+
+    padding-bottom:15px;
+}
+
+.cart-header h2{
+    margin:0;
+}
+
+.close-cart{
+    border:none;
+    background:#ffd5e6;
+    color:#963c6c;
+
+    border-radius:50%;
+
+    width:35px;
+    height:35px;
+
+    cursor:pointer;
+    font-size:18px;
+}
+
+
+/* CART ITEM */
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #f3d7e4;
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-name{
+    font-weight:bold;
+    color:#8d3d65;
+}
+
+.cart-item-price{
+    font-size:14px;
+    color:#d04e8b;
+    margin-top:5px;
+}
+
+
+/* QUANTITY */
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:8px;
+}
+
+.quantity button{
+    width:28px;
+    height:28px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#ffd5e6;
+    color:#8d3d65;
+
+    cursor:pointer;
+    font-weight:bold;
+}
+
+
+/* REMOVE */
+
+.remove{
+    border:none;
+    background:none;
+    color:#d45c8d;
+
+    cursor:pointer;
+    font-size:18px;
+}
+
+
+/* =========================
+   CART SUMMARY
+========================= */
+
+.cart-summary{
+    margin-top:25px;
+
+    background:#fff5fa;
+
+    padding:18px;
+
+    border-radius:18px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+
+.discount{
+    color:#d04e8b;
+    font-weight:bold;
+}
+
+.total{
+    font-size:22px;
+    font-weight:bold;
+    color:#a13d70;
+
+    border-top:1px solid #edc6d8;
+
+    padding-top:15px;
+}
+
+
+/* =========================
+   PROMO INPUT
+========================= */
+
+.promo-input{
+    display:flex;
+    gap:7px;
+    margin-top:15px;
+}
+
+.promo-input input{
+    flex:1;
+
+    border:1px solid #efbdd2;
+
+    border-radius:15px;
+
+    padding:10px;
+
+    outline:none;
+}
+
+.promo-input button{
+    border:none;
+
+    background:#e66d9f;
+    color:white;
+
+    border-radius:15px;
+
+    padding:10px 13px;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+.checkout{
+    width:100%;
+
+    border:none;
+
+    background:#d95791;
+    color:white;
+
+    padding:14px;
+
+    border-radius:25px;
+
+    margin-top:15px;
+
+    cursor:pointer;
+
+    font-size:16px;
+    font-weight:bold;
+}
+
+.clear-cart{
+    width:100%;
+
+    border:none;
+
+    background:#ffdce9;
+    color:#9b3d6c;
+
+    padding:11px;
+
+    border-radius:25px;
+
+    margin-top:8px;
+
+    cursor:pointer;
+}
+
+
+/* EMPTY CART */
+
+.empty-cart{
+    text-align:center;
+
+    padding:50px 10px;
+
+    color:#a65b80;
+}
+
+
+/* CART OVERLAY */
+
+.cart-overlay{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(80,20,50,.25);
+
+    z-index:999;
+}
+
+.cart-overlay.active{
+    display:block;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+
+    background:#ffbad7;
+
+    padding:28px;
+
+    color:#71344f;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:850px){
+
+    .products{
+        grid-template-columns:1fr 1fr;
+    }
+
+    nav{
+        display:none;
+    }
+
+}
+
+@media(max-width:550px){
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    .cart-section{
+        width:100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo">
+        pretty in pink ♡
+    </div>
+
+    <nav>
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#products">
+            Products
+        </a>
+
+        <a href="#price">
+            Prices
+        </a>
+
+        <a href="#tips">
+            Tips
+        </a>
+
+    </nav>
+
+    <button
+        class="cart-button"
+        onclick="openCart()"
+    >
+
+        🛒 Cart
+
+        <span
+            class="cart-count"
+            id="cartCount"
+        >
+            0
+        </span>
+
+    </button>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<div
+    class="hero"
+    id="home"
+>
+
+    <p>
+        🎀 PINK BEAUTY CORNER 🎀
+    </p>
+
+    <h1>
+        pretty in pink
+    </h1>
+
+    <p>
+        tiny beauty things that make you feel extra pretty ♡
+    </p>
+
+    <a
+        class="btn"
+        href="#products"
+    >
+        shop the pretty things
+    </a>
+
+</div>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section>
+
+    <h2>
+        about this website ♡
+    </h2>
+
+    <p class="intro">
+
+        Website ini dibuat sebagai project HTML
+        sederhana tentang produk makeup.
+        Temanya pink, cute, dan girly dengan
+        berbagai produk makeup sebagai contoh katalog.
+
+        Website ini juga dilengkapi dengan kategori,
+        price list, shopping cart, promo,
+        dan checkout.
+
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
+<section id="products">
+
+    <h2>
+        our pretty picks 🎀
+    </h2>
+
+
+    <!-- CATEGORY BUTTONS -->
+
+    <div class="tabs">
+
+        <button
+            onclick="filterProducts('all')"
+        >
+            all pretty things
+        </button>
+
+        <button
+            onclick="filterProducts('lips')"
+        >
+            lips 💋
+        </button>
+
+        <button
+            onclick="filterProducts('cheeks')"
+        >
+            cheeks 🌸
+        </button>
+
+        <button
+            onclick="filterProducts('face')"
+        >
+            face ✨
+        </button>
+
+    </div>
+
+
+
+    <!-- PRODUCT GRID -->
+
+    <div class="products">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div
+            class="card"
+            data-cat="lips"
+        >
+
+            <div class="product-art">
+
+                <img
+                    src="https://th.laneige.com/cdn/shop/files/TN__LGB_Pink-Supernova_Stardust-39.jpg?v=1772613062"
+                    alt="Sweet Pink Lip Balm"
+                >
+
+            </div>
+
+            <h3>
+                Sweet Pink Lip Balm
+            </h3>
+
+            <p>
+                Lip balm lembut dengan tampilan
+                glossy natural.
+            </p>
+
+            <p>
+                foto produk ini refesensi dari produk Laneige Lip Glowy Balm
+            </p>
+
+            <div class="price">
+                Rp89.000
+            </div>
+
+            <button
+                class="buy"
+                onclick="addToCart(
+                    'Sweet Pink Lip Balm',
+                    89000
+                )"
+            >
+                ♡ Add to cart
+            </button>
+
+        </div>
+
+
+
+        <!-- PRODUCT 2 -->
+
+        <div
+            class="card"
+            data-cat="cheeks"
+        >
+
+            <div class="product-art">
+
+                <img
+                    src="https://prcdn.freetls.fastly.net/release_image/18505/3123/18505-3123-7c3aaabb82116772efd2647f34b9f71d-3900x3899.jpg?auto=webp&bg-color=fff&fit=bounds&format=jpeg&height=1350&quality=85%2C65&width=1950"
+                    alt="Rosy Pink Blush"
+                >
+
+            </div>
+
+            <h3>
+                Rosy Pink Blush
+            </h3>
+
+            <p>
+                Blush pink untuk memberikan efek
+                fresh dan cute.
+            </p>
+
+            <p>
+                foto produk ini refesensi dari produk SNIDEL BEAUTY Euphoric Glow Blush
+            </p>
+
+
+            <div class="price">
+                Rp129.000
+            </div>
+
+            <button
+                class="buy"
+                onclick="addToCart(
+                    'Rosy Pink Blush',
+                    129000
+                )"
+            >
+                ♡ Add to cart
+            </button>
+
+        </div>
+
+
+
+        <!-- PRODUCT 3 -->
+
+        <div
+            class="card"
+            data-cat="cheeks"
+        >
+
+            <div class="product-art">
+
+                <img
+                   src="blush-stick.png"
+                   alt="Pretty Blush Stick"
+                >
+
+            </div>
+
+            <h3>
+                Pretty Blush Stick
+            </h3>
+
+            <p>
+                Blush stick praktis untuk
+                touch-up kapan saja.
+            </p>
+
+            <p>
+                foto produk ini refesensi dari produk Rhode Pocket Blush.
+            </p>
+
+
+            <div class="price">
+                Rp149.000
+            </div>
+
+            <button
+                class="buy"
+                onclick="addToCart(
+                    'Pretty Blush Stick',
+                    149000
+                )"
+            >
+                ♡ Add to cart
+            </button>
+
+        </div>
+
+
+
+        <!-- PRODUCT 4 -->
+
+        <div
+            class="card"
+            data-cat="lips"
+        >
+
+            <div class="product-art">
+
+                <img
+                    src="https://c.cdnmp.net/239505480/p/l/1/set-3-uleiuri-de-buze-hydra-kiss-lip-oil-trio-01-essence~95541.jpg"
+                    alt="Glossy Pink Lip Oil"
+                >
+
+            </div>
+
+            <h3>
+                Glossy Pink Lip Oil
+            </h3>
+
+            <p>
+                Lip oil dengan hasil shiny
+                dan ringan di bibir.
+            </p>
+
+            <p>
+                foto produk ini refesensi dari produk Essence Hydra Kiss Lip Oil.
+            </p>
+
+
+            <div class="price">
+                Rp119.000
+            </div>
+
+            <button
+                class="buy"
+                onclick="addToCart(
+                    'Glossy Pink Lip Oil',
+                    119000
+                )"
+            >
+                ♡ Add to cart
+            </button>
+
+        </div>
+
+
+
+        <!-- PRODUCT 5 -->
+
+        <div
+            class="card"
+            data-cat="lips"
+        >
+
+            <div class="product-art">
+
+                <img
+                    src="https://www.sephora.com/productimages/sku/s2652113-main-zoom.jpg?imwidth=2000&pb=allure-2024-bestofbeauty"
+                    alt="Pink Lip Butter"
+                >
+
+            </div>
+
+            <h3>
+                Pink Lip Butter
+            </h3>
+
+            <p>
+                Lip butter dengan tekstur
+                creamy dan lembut.
+            </p>
+
+            <p>
+                foto produk ini refesensi dari produk summer fridays lip butter.
+            </p>
+
+            <div class="price">
+                Rp99.000
+            </div>
+
+            <button
+                class="buy"
+                onclick="addToCart(
+                    'Pink Lip Butter',
+                    99000
+                )"
+            >
+                ♡ Add to cart
+            </button>
+
+        </div>
+
+
+
+        <!-- PRODUCT 6 -->
+
+        <div
+            class="card"
+            data-cat="face"
+        >
+
+            <div class="product-art">
+
+                <img
+                    src="https://www.farmainforma.net/23954-thickbox_default/Serum-Skin-Tint-Fondotinta-Siero-Idratante-03-Ecru-Light-Warm.jpg"
+                    alt="Soft Glow Skin Tint"
+                >
+
+            </div>
+
+            <h3>
+                Soft Glow Skin Tint
+            </h3>
+
+            <p>
+                Base makeup ringan dengan hasil
+                glowing natural.
+            </p>
+         
+            <p>
+                foto produk ini refesensi dari produk Goovi Serum Skin tint.
+            </p>
+
+            <div class="price">
+                Rp179.000
+            </div>
+
+            <button
+                class="buy"
+                onclick="addToCart(
+                    'Soft Glow Skin Tint',
+                    179000
+                )"
+            >
+                ♡ Add to cart
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PRICE LIST
+========================= -->
+
+<section id="price">
+
+    <h2>
+        price list 💗
+    </h2>
+
+    <table>
+
+        <tr>
+            <th>
+                Product
+            </th>
+
+            <th>
+                Category
+            </th>
+
+            <th>
+                Price
+            </th>
+        </tr>
+
+
+        <tr>
+            <td>
+                Sweet Pink Lip Balm
+            </td>
+
+            <td>
+                Lips
+            </td>
+
+            <td>
+                Rp89.000
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Rosy Pink Blush
+            </td>
+
+            <td>
+                Cheeks
+            </td>
+
+            <td>
+                Rp129.000
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Pretty Blush Stick
+            </td>
+
+            <td>
+                Cheeks
+            </td>
+
+            <td>
+                Rp149.000
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Glossy Pink Lip Oil
+            </td>
+
+            <td>
+                Lips
+            </td>
+
+            <td>
+                Rp119.000
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Pink Lip Butter
+            </td>
+
+            <td>
+                Lips
+            </td>
+
+            <td>
+                Rp99.000
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Soft Glow Skin Tint
+            </td>
+
+            <td>
+                Face
+            </td>
+
+            <td>
+                Rp179.000
+            </td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+
+<!-- =========================
+     PROMO
+========================= -->
+
+<section>
+
+    <div class="promo">
+
+        <h2>
+            🎀 little pink promo 🎀
+        </h2>
+
+        <p>
+            Gunakan kode
+            <b>PINK10</b>
+            untuk mendapatkan
+            diskon 10% ♡
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     BEAUTY TIPS
+========================= -->
+
+<section id="tips">
+
+    <h2>
+        beauty tips 🌷
+    </h2>
+
+    <div class="tips">
+
+        <p>
+            💗 Bersihkan wajah sebelum makeup.
+        </p>
+
+        <p>
+            💗 Gunakan makeup secukupnya
+            sesuai kebutuhan.
+        </p>
+
+        <p>
+            💗 Simpan makeup di tempat
+            yang bersih dan kering.
+        </p>
+
+        <p>
+            💗 Cek kecocokan produk
+            dengan kulit masing-masing.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CART OVERLAY
+========================= -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()"
+></div>
+
+
+
+<!-- =========================
+     CART
+========================= -->
+
+<div
+    class="cart-section"
+    id="cartSection"
+>
+
+
+    <div class="cart-header">
+
+        <h2>
+            your cart 🛒
+        </h2>
+
+        <button
+            class="close-cart"
+            onclick="closeCart()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- CART ITEMS -->
+
+    <div id="cartItems">
+
+        <div class="empty-cart">
+
+            🛍️
+
+            <br><br>
+
+            Your cart is still empty ♡
+
+            <br>
+
+            Yuk pilih makeup dulu!
+
+        </div>
+
+    </div>
+
+
+    <!-- PROMO -->
+
+    <div class="promo-input">
+
+        <input
+            type="text"
+            id="promoCode"
+            placeholder="Promo code"
+        >
+
+        <button
+            onclick="applyPromo()"
+        >
+            Apply
+        </button>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="cart-summary">
+
+        <div class="summary-row">
+
+            <span>
+                Subtotal
+            </span>
+
+            <span id="subtotal">
+                Rp0
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                Diskon
+            </span>
+
+            <span
+                class="discount"
+                id="discount"
+            >
+                - Rp0
+            </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                Ongkir
+            </span>
+
+            <span id="shipping">
+                Rp0
+            </span>
+
+        </div>
+
+
+        <div class="summary-row total">
+
+            <span>
+                Total
+            </span>
+
+            <span id="total">
+                Rp0
+            </span>
+
+        </div>
+
+
+        <button
+            class="checkout"
+            onclick="checkout()"
+        >
+            💗 CHECKOUT
+        </button>
+
+
+        <button
+            class="clear-cart"
+            onclick="clearCart()"
+        >
+            🗑️ Kosongkan Cart
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        made with ♡ 
+    </p>
+
+    <p>
+        pretty in pink 🎀
+    </p>
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+/* CART */
+
+let cart = [];
+
+let discountPercent = 0;
+
+
+
+/* ADD TO CART */
+
+function addToCart(name, price){
+
+    let item = cart.find(
+        x => x.name === name
+    );
+
+    if(item){
+
+        item.quantity++;
+
+    }else{
+
+        cart.push({
+            name:name,
+            price:price,
+            quantity:1
+        });
+
+    }
+
+    updateCart();
+
+    openCart();
+
+}
+
+
+
+/* UPDATE CART */
+
+function updateCart(){
+
+    let count = 0;
+
+    let subtotal = 0;
+
+
+    cart.forEach(item => {
+
+        count += item.quantity;
+
+        subtotal +=
+            item.price *
+            item.quantity;
+
+    });
+
+
+    document.getElementById(
+        "cartCount"
+    ).innerText = count;
+
+
+    let box =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    /* EMPTY */
+
+    if(!cart.length){
+
+        box.innerHTML = `
+
+            <div class="empty-cart">
+
+                🛍️
+
+                <br><br>
+
+                Your cart is still empty ♡
+
+                <br>
+
+                Yuk pilih makeup dulu!
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* HAS ITEMS */
+
+    else{
+
+        box.innerHTML = "";
+
+
+        cart.forEach(
+            (item,index) => {
+
+                box.innerHTML += `
+
+                    <div class="cart-item">
+
+                        <div class="cart-item-info">
+
+                            <div class="cart-item-name">
+                                ${item.name}
+                            </div>
+
+                            <div class="cart-item-price">
+                                ${formatRupiah(item.price)}
+                            </div>
+
+                            <div class="quantity">
+
+                                <button
+                                    onclick="decreaseItem(${index})"
+                                >
+                                    −
+                                </button>
+
+                                <span>
+                                    ${item.quantity}
+                                </span>
+
+                                <button
+                                    onclick="increaseItem(${index})"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <b>
+                                ${formatRupiah(
+                                    item.price *
+                                    item.quantity
+                                )}
+                            </b>
+
+                            <br>
+
+                            <button
+                                class="remove"
+                                onclick="removeItem(${index})"
+                            >
+                                🗑️
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+    }
+
+
+    /* DISCOUNT */
+
+    let discount =
+        subtotal *
+        discountPercent;
+
+
+    /* SHIPPING */
+
+    let shipping =
+        cart.length
+        ?
+        (
+            subtotal >= 250000
+            ?
+            0
+            :
+            15000
+        )
+        :
+        0;
+
+
+    /* TOTAL */
+
+    let total =
+        subtotal -
+        discount +
+        shipping;
+
+
+    document.getElementById(
+        "subtotal"
+    ).innerText =
+        formatRupiah(subtotal);
+
+
+    document.getElementById(
+        "discount"
+    ).innerText =
+        "- " +
+        formatRupiah(discount);
+
+
+    document.getElementById(
+        "shipping"
+    ).innerText =
+
+        shipping === 0 &&
+        subtotal > 0
+
+        ?
+
+        "GRATIS"
+
+        :
+
+        formatRupiah(shipping);
+
+
+    document.getElementById(
+        "total"
+    ).innerText =
+        formatRupiah(total);
+
+}
+
+
+
+/* PLUS */
+
+function increaseItem(index){
+
+    cart[index].quantity++;
+
+    updateCart();
+
+}
+
+
+
+/* MINUS */
+
+function decreaseItem(index){
+
+    cart[index].quantity--;
+
+
+    if(
+        cart[index].quantity <= 0
+    ){
+
+        cart.splice(index,1);
+
+    }
+
+
+    updateCart();
+
+}
+
+
+
+/* REMOVE */
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+}
+
+
+
+/* CLEAR CART */
+
+function clearCart(){
+
+    if(!cart.length){
+
+        alert(
+            "Cart kamu sudah kosong ♡"
+        );
+
+        return;
+
+    }
+
+
+    if(
+        confirm(
+            "Yakin mau mengosongkan cart?"
+        )
+    ){
+
+        cart = [];
+
+        discountPercent = 0;
+
+        document.getElementById(
+            "promoCode"
+        ).value = "";
+
+        updateCart();
+
+    }
+
+}
+
+
+
+/* PROMO */
+
+function applyPromo(){
+
+    let code =
+        document.getElementById(
+            "promoCode"
+        )
+        .value
+        .toUpperCase()
+        .trim();
+
+
+    if(
+        code === "PINK10"
+    ){
+
+        discountPercent = 0.10;
+
+        alert(
+            "Yeay! Kode PINK10 berhasil 💗\n" +
+            "Diskon 10%!"
+        );
+
+    }
+
+
+    else if(
+        code === ""
+    ){
+
+        alert(
+            "Masukkan kode promo dulu ya ♡"
+        );
+
+    }
+
+
+    else{
+
+        discountPercent = 0;
+
+        alert(
+            "Kode promo tidak ditemukan :("
+        );
+
+    }
+
+
+    updateCart();
+
+}
+
+
+
+/* CHECKOUT */
+
+function checkout(){
+
+    if(!cart.length){
+
+        alert(
+            "Cart kamu masih kosong ♡\n" +
+            "Pilih produk dulu ya!"
+        );
+
+        return;
+
+    }
+
+
+    let subtotal =
+        cart.reduce(
+            (sum,item) =>
+                sum +
+                item.price *
+                item.quantity,
+            0
+        );
+
+
+    let discount =
+        subtotal *
+        discountPercent;
+
+
+    let shipping =
+        subtotal >= 250000
+        ?
+        0
+        :
+        15000;
+
+
+    let total =
+        subtotal -
+        discount +
+        shipping;
+
+
+    alert(
+
+        "🎀 CHECKOUT BERHASIL! 🎀\n\n" +
+
+        "Terima kasih sudah berbelanja di\n" +
+
+        "Pretty in Pink ♡\n\n" +
+
+        "Subtotal : " +
+        formatRupiah(subtotal) +
+
+        "\nDiskon : " +
+        formatRupiah(discount) +
+
+        "\nOngkir : " +
+        (
+            shipping === 0
+            ?
+            "GRATIS"
+            :
+            formatRupiah(shipping)
+        ) +
+
+        "\n\nTOTAL : " +
+        formatRupiah(total) +
+
+        "\n\n💗 Pesanan kamu sedang diproses!"
+
+    );
+
+}
+
+
+
+/* RUPIAH */
+
+function formatRupiah(number){
+
+    return new Intl.NumberFormat(
+        "id-ID",
+        {
+            style:"currency",
+            currency:"IDR",
+            minimumFractionDigits:0
+        }
+    ).format(number);
+
+}
+
+
+
+/* OPEN CART */
+
+function openCart(){
+
+    document
+        .getElementById(
+            "cartSection"
+        )
+        .classList
+        .add("active");
+
+
+    document
+        .getElementById(
+            "cartOverlay"
+        )
+        .classList
+        .add("active");
+
+}
+
+
+
+/* CLOSE CART */
+
+function closeCart(){
+
+    document
+        .getElementById(
+            "cartSection"
+        )
+        .classList
+        .remove("active");
+
+
+    document
+        .getElementById(
+            "cartOverlay"
+        )
+        .classList
+        .remove("active");
+
+}
+
+
+
+/* FILTER PRODUCTS */
+
+function filterProducts(category){
+
+    document
+        .querySelectorAll(".card")
+        .forEach(card => {
+
+            if(
+                category === "all" ||
+                card.dataset.cat === category
+            ){
+
+                card.style.display =
+                    "block";
+
+            }
+
+            else{
+
+                card.style.display =
+                    "none";
+
+            }
+
+        });
+
+}
+
+
+
+/* RUN CART */
+
+updateCart();
+
+</script>
+
+
+</body>
+
+</html>
